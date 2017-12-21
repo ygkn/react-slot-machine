@@ -1,0 +1,9 @@
+{
+  "name": "react-slot-machine",
+  "version": "0.0.0",
+  "description": "A slot machine library for React",
+  "main": "lib/index.js",
+  "repository": "git@github.com:ygkn/react-slot-machine.git",
+  "author": "Yugo Yagita <2000ygkn0713@gmail.com>",
+  "license": "MIT"
+}
