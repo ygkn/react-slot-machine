@@ -1,3 +1,6 @@
+lib
+examples/build.js
+
 # Logs
 logs
 *.log
