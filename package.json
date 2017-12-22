@@ -5,5 +5,28 @@
   "main": "lib/index.js",
   "repository": "git@github.com:ygkn/react-slot-machine.git",
   "author": "Yugo Yagita <2000ygkn0713@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.35",
+    "@babel/core": "^7.0.0-beta.35",
+    "@babel/preset-env": "^7.0.0-beta.35",
+    "@babel/preset-react": "^7.0.0-beta.35",
+    "@babel/preset-stage-0": "^7.0.0-beta.35",
+    "babel-loader": "8.0.0-beta.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "^1.9.2",
+    "prettier-eslint": "^8.5.0",
+    "prettier-eslint-cli": "^4.6.1"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "styled-components": "^2.3.3",
+    "sweet-scroll": "^3.0.0"
+  }
 }
