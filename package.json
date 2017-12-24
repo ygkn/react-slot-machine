@@ -2,7 +2,7 @@
   "name": "react-slot-machine",
   "version": "0.0.2",
   "description": "A slot machine library for React",
-  "main": "lib/index.js",
+  "main": "lib/Slot.js",
   "repository": "git@github.com:ygkn/react-slot-machine.git",
   "author": "Yugo Yagita <2000ygkn0713@gmail.com>",
   "license": "MIT",
