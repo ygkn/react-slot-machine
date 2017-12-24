@@ -22,11 +22,18 @@
     "eslint-plugin-react": "^7.5.1",
     "prettier": "^1.9.2",
     "prettier-eslint": "^8.5.0",
-    "prettier-eslint-cli": "^4.6.1"
+    "prettier-eslint-cli": "^4.6.1",
+    "@storybook/react": "^3.2.19",
+    "@storybook/addon-actions": "^3.2.19",
+    "@storybook/addon-links": "^3.2.19"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.2.0",
     "styled-components": "^2.3.3",
     "sweet-scroll": "^3.0.0"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   }
 }
