@@ -1,4 +1,3 @@
-import Slot from './slot';
-import SlotItem from './slot-item';
+import Slot from './Slot';
 
-export default { Slot, SlotItem };
+export default Slot;
