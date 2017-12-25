@@ -7,17 +7,16 @@
   "author": "Yugo Yagita <2000ygkn0713@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.35",
-    "@babel/core": "^7.0.0-beta.35",
-    "@babel/preset-env": "^7.0.0-beta.35",
-    "@babel/preset-react": "^7.0.0-beta.35",
-    "@babel/preset-stage-0": "^7.0.0-beta.35",
     "@storybook/addon-actions": "^3.2.19",
     "@storybook/addon-links": "^3.2.19",
     "@storybook/react": "^3.2.19",
     "@storybook/storybook-deployer": "^2.2.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-loader": "8.0.0-beta.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.13.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -27,21 +26,22 @@
     "prettier": "^1.9.2",
     "prettier-eslint": "^8.5.0",
     "prettier-eslint-cli": "^4.6.1",
-    "@storybook/react": "^3.2.19",
-    "@storybook/addon-actions": "^3.2.19",
-    "@storybook/addon-links": "^3.2.19"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "styled-jsx": "^2.2.1"
   },
   "peerDependencies": {
     "react": "^16.2.0",
-    "styled-components": "^2.3.3",
-    "sweet-scroll": "^3.0.0"
+    "react-dom": "^16.2.0",
+    "styled-jsx": "^2.2.1"
   },
   "scripts": {
-    "build": "babel src -d lib",
+    "build": "yarn run clean-dist && NODE_ENV=production babel src -d lib",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
     "postversion": "yarn && yarn test && yarn build",
-    "postpublish": "yarn deploy-storybook"
+    "postpublish": "yarn deploy-storybook",
+    "clean-dist": "rm -rf ./lib"
   }
 }
