@@ -1,4 +1,12 @@
 {
-  "presets": ["@babel/env", "@babel/react", "@babel/stage-0"],
-  "plugins": ["transform-react-jsx"]
+  "env": {
+    "production": {
+      "presets": ["env", "react", "stage-1"],
+      "plugins": ["styled-jsx/babel"]
+    },
+    "development": {
+      "presets": ["env", "react", "stage-1"],
+      "plugins": ["styled-jsx/babel"]
+    }
+  }
 }
