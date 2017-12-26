@@ -12,27 +12,35 @@ class Slot extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.target === prevProps.target) return;
 
-    this.FrameRef.scrollTop = 0;
+    const $frame = this.FrameRef;
 
-    const target = this.targetRefs[this.props.target];
+    $frame.scrollTop = 0;
 
-    if (target == null) return;
+    if (this.props.target === 0) return;
 
-    const beforeDistance = findDOMNode(this.targetRefs[this.targetRefs.length - 1]).offsetTop;
+    const $target = findDOMNode(this.targetRefs[this.props.target]);
 
-    const beforeScroll = this.props.times > 1 ? beforeDistance * (this.props.times - 1) : 0;
+    if ($target == null) return;
 
-    const totalScroll = beforeScroll + target.offsetTop;
+    console.log(this.props.target, $target);
+
+    const fullScroll = findDOMNode(this.targetRefs[this.targetRefs.length - 1]).offsetTop;
+    const targetOffset = $target.offsetTop;
+
+    const totalScroll = targetOffset + fullScroll * (this.props.times - 1);
+    console.log(totalScroll, targetOffset, fullScroll);
 
     const startTime = Date.now();
 
     const tick = () => {
       const elapsed = Date.now() - startTime;
-      console.log(elapsed);
-      if (elapsed > this.props.duration) return;
+      if (elapsed > this.props.duration) {
+        this.props.onEnd();
+        return;
+      }
 
-      this.FrameRef.scrollTop =
-        this.props.easing(elapsed, 0, totalScroll, this.props.duration) % beforeDistance;
+      const amount = this.props.easing(elapsed, 0, totalScroll, this.props.duration);
+      $frame.scrollTop = amount % fullScroll;
 
       requestAnimationFrame(tick);
     };
@@ -60,6 +68,7 @@ Slot.defaultProps = {
     return -amountOfChange * (elapsed /= duration) * (elapsed - 2) + initialValue;
   },
   times: 1,
+  onEnd: () => {},
 };
 
 Slot.propTypes = {
@@ -67,6 +76,7 @@ Slot.propTypes = {
   target: PropTypes.number.isRequired,
   easing: PropTypes.func,
   times: PropTypes.number,
+  onEnd: PropTypes.func,
 };
 
 export default Slot;
