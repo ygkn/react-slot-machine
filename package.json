@@ -1,6 +1,6 @@
 {
   "name": "react-slot-machine",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A slot machine library for React",
   "main": "lib/Slot.js",
   "repository": "git@github.com:ygkn/react-slot-machine.git",
