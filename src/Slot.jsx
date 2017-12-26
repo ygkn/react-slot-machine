@@ -23,7 +23,6 @@ class Slot extends React.Component {
     const beforeScroll = this.props.times > 1 ? beforeDistance * (this.props.times - 1) : 0;
 
     const totalScroll = beforeScroll + target.offsetTop;
-    console.log(target.offsetTop, totalScroll);
 
     const startTime = Date.now();
 
