@@ -15,7 +15,12 @@ const list = [
 class SlotMacine extends React.Component {
   constructor() {
     super();
-    this.state = { index: 0, times: 1 };
+    this.state = {
+      target: 1,
+      times: 1,
+      duration: 3000,
+      turn: false,
+    };
   }
   render() {
     return (
@@ -36,26 +41,78 @@ class SlotMacine extends React.Component {
               border: solid 1px;
               border-radius: 3px;
             }
+            label {
+              display: block;
+              margin: 1em 0;
+            }
           `}
         </style>
-        <button onClick={() => this.setState({ index: Math.floor(Math.random() * list.length) })}>
-          Slottle!
-        </button>
-        <input
-          type="number"
-          min="1"
-          value={this.state.times}
-          onInput={({ target }) => this.setState({ times: target.value })}
-          placeholder="input slottle times"
-        />
-        <p>{this.state.index + list[this.state.index].name}</p>
-        <Slot className="slot" target={this.state.index} times={this.state.times}>
+        <label>
+          Target
+          <input
+            type="number"
+            min="1"
+            max={list.length - 1}
+            onInput={e => this.setState({ target: parseInt(e.target.value) })}
+            value={this.state.target}
+          />
+          <button
+            onClick={() =>
+              this.setState({ target: Math.floor(Math.random() * (list.length - 2)) + 1 })
+            }
+          >
+            set random
+          </button>
+        </label>
+        <label>
+          Duration(ms)
+          <input
+            type="number"
+            min="0"
+            step="100"
+            onInput={e => this.setState({ duration: parseInt(e.target.value) })}
+            value={this.state.duration}
+          />
+        </label>
+        <label>
+          Turn times
+          <input
+            type="number"
+            min="1"
+            value={this.state.times}
+            onInput={({ target }) => this.setState({ times: parseInt(target.value) })}
+            placeholder="input turn times"
+          />
+        </label>
+        <label>
+          Turning
+          <input
+            type="checkbox"
+            onChange={({ target }) => this.setState({ turn: target.checked })}
+            checked={this.state.turn}
+          />
+        </label>
+        <Slot
+          className="slot"
+          duration={this.state.duration}
+          target={this.state.turn ? this.state.target : 0}
+          times={this.state.times}
+        >
           {list.map(({ name, color }) => (
             <div className="slot-item" style={{ color }}>
               {name.split('\n').map(v => <div>{v}</div>)}
             </div>
           ))}
         </Slot>
+        <h2>List</h2>
+        <table>
+          {list.map(({ name, color }, i) => (
+            <tr style={{ color }}>
+              <th>{i}</th>
+              <td>{name}</td>
+            </tr>
+          ))}
+        </table>
       </div>
     );
   }
