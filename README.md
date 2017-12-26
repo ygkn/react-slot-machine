@@ -2,5 +2,5 @@
 
 A slot machine library for React
 
-![DEMO](https://github.com/ygkn/react-slot-machine)
+![DEMO](./demo.gif)
 [DEMO](https://ygkn.github.io/react-slot-machine/)
